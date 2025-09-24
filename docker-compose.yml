@@ -1,0 +1,9 @@
+services:
+  BlogPostDB:
+    image: mariadb:latest
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - 3306:3306
