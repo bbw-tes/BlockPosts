@@ -6,4 +6,27 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     ports:
-      - 3306:3306
+      - 3307:3306
+    networks:
+      - blognet
+
+  BlogPostApp:
+    build: ./Blog
+    depends_on:
+      - BlogPostDB
+    environment:
+      DB_HOST: BlogPostDB
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: blogpostdb
+    ports:
+      - 8070:8080
+    networks:
+      - blognet
+
+volumes:
+  db-data:
+
+networks:
+  blognet:
+    driver: bridge
