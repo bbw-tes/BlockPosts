@@ -1,5 +1,5 @@
 services:
-  BlogPostDB:
+  blogpostdb:
     image: mariadb:latest
     environment:
       MARIADB_ROOT_PASSWORD: root
@@ -10,12 +10,12 @@ services:
     networks:
       - blognet
 
-  BlogPostApp:
-    build: ./Blog
+  blogpostapp:
+    build: .
     depends_on:
-      - BlogPostDB
+      - blogpostdb
     environment:
-      DB_HOST: BlogPostDB
+      DB_HOST: blogpostdb
       DB_USER: root
       DB_PASSWORD: root
       DB_NAME: blogpostdb
