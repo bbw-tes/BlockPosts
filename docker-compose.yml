@@ -1,4 +1,18 @@
 services:
+  gui_db:
+    image: phpmyadmin:latest
+    environment:
+      PMA_Host: blogpostdb
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - 8081:80
+    depends_on:
+      - blogpostdb
+    networks:
+      - blognet
+
+
   blogpostdb:
     image: mariadb:latest
     environment:
